@@ -7,6 +7,10 @@
     <groupId>zx.cn</groupId>
     <artifactId>zx-spring-cloud</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>zx-eureka</module>
+        <module>zx-zuul</module>
+    </modules>
 
 
 </project>
