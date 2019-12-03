@@ -1,5 +1,7 @@
 package zx.cn.consumer;
 
+import com.netflix.loadbalancer.IRule;
+import com.netflix.loadbalancer.RandomRule;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -23,5 +25,14 @@ public class ZxConsumerApplication {
     @LoadBalanced
     RestTemplate restTemplate() {
         return new RestTemplate();
+    }
+
+    /**
+     * 负载均衡策略
+     * @return
+     */
+    @Bean
+    public IRule rule() {
+        return new RandomRule();
     }
 }
