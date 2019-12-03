@@ -9,3 +9,18 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8000/eureka/
+zuul:
+  #前缀
+  prefix: /api
+  ignored-patterns: /**/getMember1/**
+  routes:
+    zx-provider:
+      #服务映射的路径，通过这路径就可以从外部访问你的服务了，目的是为了不爆露你机器的IP，面向服务的路由了，给你选一个可用的出来，
+      #这里zuul是自动依赖hystrix，ribbon的，不是面向单机
+      path: /pd/**
+      #服务的名称
+      serviceId: zx-provider
+    zx-consumer:
+      path: /cm/**
+      serviceId: zx-consumer
+

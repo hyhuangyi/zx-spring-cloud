@@ -8,11 +8,11 @@ eureka:
   instance:
     hostname: localhost
   client:
-    #ÊÇ·ñĞèÒª½«×Ô¼º×¢²áµ½×¢²áÖĞĞÄ(×¢²áÖĞĞÄ¼¯ÈºĞèÒªÉèÖÃÎªtrue)
+    #æ˜¯å¦éœ€è¦å°†è‡ªå·±æ³¨å†Œåˆ°æ³¨å†Œä¸­å¿ƒ(æ³¨å†Œä¸­å¿ƒé›†ç¾¤éœ€è¦è®¾ç½®ä¸ºtrue)
     register-with-eureka: false
-    #ÊÇ·ñĞèÒªËÑË÷·şÎñĞÅÏ¢ ÒòÎª×Ô¼ºÊÇ×¢²áÖĞĞÄËùÒÔÎªfalse
+    #æ˜¯å¦éœ€è¦æœç´¢æœåŠ¡ä¿¡æ¯ å› ä¸ºè‡ªå·±æ˜¯æ³¨å†Œä¸­å¿ƒæ‰€ä»¥ä¸ºfalse
     fetch-registry: false
-    #·şÎñµØÖ·
+    #æœåŠ¡åœ°å€
     service-url:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 
