@@ -28,7 +28,30 @@ public class SwaggerConfig {
         aParameters.add(aParameterBuilder.build());
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(zxInfo())
-                //.groupName("api")
+                .groupName("api-1")
+                .genericModelSubstitutes(DeferredResult.class)
+                .useDefaultResponseMessages(false)
+                .globalOperationParameters(aParameters)
+                .forCodeGeneration(false)
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("zx.cn.consumer.controller"))
+                .paths(PathSelectors.any())
+                .build();
+    }
+
+    /**
+     * 展示分组
+     * @return
+     */
+    @Bean
+    public Docket zxApi1() {
+        ParameterBuilder aParameterBuilder = new ParameterBuilder();
+        aParameterBuilder.name("Authorization").defaultValue("").description("token").modelRef(new ModelRef("string")).parameterType("header").required(false).build();
+        List<Parameter> aParameters = new ArrayList<Parameter>();
+        aParameters.add(aParameterBuilder.build());
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(zxInfo())
+                 .groupName("api-2")
                 .genericModelSubstitutes(DeferredResult.class)
                 .useDefaultResponseMessages(false)
                 .globalOperationParameters(aParameters)
