@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 import springfox.documentation.swagger.web.SwaggerResource;
 import springfox.documentation.swagger.web.SwaggerResourcesProvider;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
@@ -17,6 +19,7 @@ import java.util.Properties;
 /**
  * 分布式swagger文档配置
  */
+@EnableSwagger2
 @Component
 @Primary
 @Slf4j

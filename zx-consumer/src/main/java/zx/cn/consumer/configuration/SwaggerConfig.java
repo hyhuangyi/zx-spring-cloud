@@ -70,7 +70,7 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("zx-consumer 接口列表")
                 .description("zx-consumer==>create at 2019/12/05")
-                .version("1.0")//版本
+                .version("2.0")//版本
                 .build();
     }
 }

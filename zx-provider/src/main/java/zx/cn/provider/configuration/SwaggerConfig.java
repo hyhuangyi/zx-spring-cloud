@@ -1,5 +1,7 @@
 package zx.cn.provider.configuration;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.request.async.DeferredResult;
@@ -28,7 +30,6 @@ public class SwaggerConfig {
         aParameters.add(aParameterBuilder.build());
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(zxInfo())
-                //.groupName("api")
                 .genericModelSubstitutes(DeferredResult.class)
                 .useDefaultResponseMessages(false)
                 .globalOperationParameters(aParameters)
@@ -47,7 +48,8 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("zx-provider 接口列表")
                 .description("zx-provider==>create at 2019/12/05")
-                .version("1.0")//版本
+                .version("2.0")//版本
+
                 .build();
     }
 }
