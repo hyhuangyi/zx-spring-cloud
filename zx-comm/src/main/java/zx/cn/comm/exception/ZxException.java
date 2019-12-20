@@ -7,18 +7,18 @@ import java.io.Serializable;
  **/
 public class ZxException extends RuntimeException implements Serializable {
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
 
-	public ZxException() {
+    public ZxException() {
     }
 
     public ZxException(String message) {
         super(message);
     }
-    
+
 
     public ZxException(String message, Throwable cause) {
         super(message, cause);
