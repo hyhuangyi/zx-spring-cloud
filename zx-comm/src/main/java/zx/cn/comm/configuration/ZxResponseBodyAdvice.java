@@ -1,4 +1,4 @@
-package zx.cn.comm.advice;
+package zx.cn.comm.configuration;
 
 import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
@@ -30,7 +30,7 @@ public class ZxResponseBodyAdvice implements ResponseBodyAdvice<Object> {
     public Object beforeBodyWrite(Object o, MethodParameter methodParameter, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
         /*针对swagger actuator请求不对其拦截*/
         String path=serverHttpRequest.getURI().getPath();
-        if (path.contains("/swagger")||path.contains("actuator")) {
+        if (path.contains("/swagger")||path.contains("actuator")||path.contains("v2/api-doc")) {
             log.info("返回参数={}", JSONObject.toJSON(o));
             return o;
         }
@@ -47,13 +47,10 @@ public class ZxResponseBodyAdvice implements ResponseBodyAdvice<Object> {
             log.info("返回参数={}", JSONObject.toJSON(o));
             return o;
         } else {
-
             ResultDO res= new ResultDO(requestId,"200","成功",o);
-
             log.info("返回参数={}", JSONObject.toJSON(res));
             /*重写StringMessageConverter的解析器则不需要这样转 WebMvcConfig下的configureMessageConverters 已重写*/
             return res;
-
         }
     }
 }

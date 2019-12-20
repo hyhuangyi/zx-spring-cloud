@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import zx.cn.comm.pojo.ResultDO;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,13 +18,11 @@ public class ZxController {
 
     @HystrixCommand(fallbackMethod = "fallback")
     @GetMapping("/getAll")
-    public List<String> getAllUser(){
-        return  restTemplate.getForObject("http://zx-provider/getMember",List.class);
+    public ResultDO getAllUser(){
+        return  restTemplate.getForObject("http://zx-provider/getMember",ResultDO.class);
     }
 
-    public List<String> fallback() {
-        List<String>list=new ArrayList<>();
-        list.add("熔断了");
-        return list;
+    public ResultDO fallback() {
+        return new ResultDO("0","熔断了");
     }
 }
