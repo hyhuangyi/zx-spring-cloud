@@ -1,8 +1,12 @@
 spring:
   application:
     name: zx-eureka
+  profiles:
+    active: dev
 server:
   port: 8000
+logging:
+  config:  classpath:logback-spring.xml
 
 eureka:
   instance:

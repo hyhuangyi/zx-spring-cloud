@@ -1,9 +1,12 @@
 spring:
   application:
     name: zx-zuul
-
+  profiles:
+    active: dev
 server:
   port: 8001
+logging:
+  config:  classpath:logback-spring.xml
 
 eureka:
   client:
@@ -14,7 +17,7 @@ eureka:
 zuul:
   #前缀
 #  prefix: /api
-  ignored-patterns: /**/getMember1/**
+  ignored-patterns: /**/test/**
   routes:
     zx-provider:
       #服务映射的路径，通过这路径就可以从外部访问你的服务了，目的是为了不爆露你机器的IP，面向服务的路由了，给你选一个可用的出来，

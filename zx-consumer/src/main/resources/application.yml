@@ -1,9 +1,12 @@
 spring:
   application:
     name: zx-consumer
-
+  profiles:
+    active: dev
 server:
   port: 8003
+logging:
+  config:  classpath:logback-spring.xml
 
 eureka:
   client:
