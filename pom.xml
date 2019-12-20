@@ -10,6 +10,9 @@
     <modules>
         <module>zx-eureka</module>
         <module>zx-zuul</module>
+        <module>zx-comm</module>
+        <module>zx-provider</module>
+        <module>zx-consumer</module>
     </modules>
 
 
