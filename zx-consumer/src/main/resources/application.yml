@@ -8,9 +8,17 @@ server:
 logging:
   config:  classpath:logback-spring.xml
 
+#--------------------eureka-----------------------
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8000/eureka/
   instance:
     prefer-ip-address: true
+#--------------------oauth2-----------------------
+security:
+  oauth2:
+    resource:
+      id: zx-consumer
+      user-info-uri: http://localhost:8001/zx-auth/api/member
+      prefer-token-info: false

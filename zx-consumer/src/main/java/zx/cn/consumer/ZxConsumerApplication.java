@@ -9,11 +9,13 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableHystrix
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 @ComponentScan(basePackages={"zx.cn"})
 public class ZxConsumerApplication {
 

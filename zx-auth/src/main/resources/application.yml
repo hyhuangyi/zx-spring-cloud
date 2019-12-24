@@ -1,13 +1,12 @@
 spring:
   application:
-    name: zx-provider
-  profiles:
-    active: dev
+    name: zx-auth
+  redis:
+    database: 0
+    port: 6379
+    password:
 server:
-  port: 8002
-logging:
-  config:  classpath:logback-spring.xml
-
+  port: 8004
 #--------------------eureka-----------------------
 eureka:
   client:
@@ -15,4 +14,3 @@ eureka:
       defaultZone: http://localhost:8000/eureka/
   instance:
     prefer-ip-address: true
-

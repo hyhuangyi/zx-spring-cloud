@@ -7,13 +7,14 @@ server:
   port: 8001
 logging:
   config:  classpath:logback-spring.xml
-
+#--------------------eureka-----------------------
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8000/eureka/
   instance:
     prefer-ip-address: true
+#--------------------Zuul-----------------------
 zuul:
   #前缀
 #  prefix: /api
@@ -23,9 +24,25 @@ zuul:
       #服务映射的路径，通过这路径就可以从外部访问你的服务了，目的是为了不爆露你机器的IP，面向服务的路由了，给你选一个可用的出来，
       #这里zuul是自动依赖hystrix，ribbon的，不是面向单机
       path: /zx-provider/**
+      sensitiveHeaders: "*"
       #服务的名称
       serviceId: zx-provider
     zx-consumer:
       path: /zx-consumer/**
+      sensitiveHeaders: "*"
       serviceId: zx-consumer
-
+    zx-auth:
+      path: /zx-auth/**
+      sensitiveHeaders: "*"
+      serviceId: zx-auth
+  add-proxy-headers: true
+#---------------------oauth2---------------------
+security:
+  oauth2:
+    client:
+      access-token-uri: http://localhost:${server.port}/zx-auth/oauth/token
+      user-authorization-uri: http://localhost:${server.port}/zx-auth/oauth/authorize
+      client-id: zx-auth
+    resource:
+      user-info-uri:  http://localhost:${server.port}/zx-auth/api/member
+      prefer-token-info: false

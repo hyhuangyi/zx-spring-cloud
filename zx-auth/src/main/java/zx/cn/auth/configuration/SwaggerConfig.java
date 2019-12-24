@@ -1,4 +1,4 @@
-package zx.cn.provider.configuration;
+package zx.cn.auth.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +13,7 @@ import springfox.documentation.service.Parameter;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class SwaggerConfig {
                 .globalOperationParameters(aParameters)
                 .forCodeGeneration(false)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("zx.cn.provider.controller"))
+                .apis(RequestHandlerSelectors.basePackage("zx.cn.auth.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -43,8 +44,8 @@ public class SwaggerConfig {
      */
     private ApiInfo zxInfo() {
         return new ApiInfoBuilder()
-                .title("zx-provider 接口列表")
-                .description("zx-provider==>create at 2019/12/05")
+                .title("zx-auth 接口列表")
+                .description("zx-auth==>create at 2019/12/05")
                 .version("2.0")//版本
                 .build();
     }
