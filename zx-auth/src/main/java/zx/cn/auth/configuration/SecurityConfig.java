@@ -15,7 +15,7 @@ import zx.cn.auth.service.MyUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
-@Order(2)
+//@Order(2)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private MyUserDetailsService userDetailsService;

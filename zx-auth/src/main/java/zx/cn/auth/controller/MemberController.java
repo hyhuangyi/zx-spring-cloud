@@ -7,17 +7,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import zx.cn.auth.service.MyUserDetailsService;
 import zx.cn.comm.pojo.ResultDO;
-
 import java.security.Principal;
 
 @RestController
 @RequestMapping("/api")
 public class MemberController {
-
-    @Autowired
-    private MyUserDetailsService userDetailService;
 
     @Autowired
     private ConsumerTokenServices consumerTokenServices;

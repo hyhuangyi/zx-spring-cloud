@@ -16,3 +16,10 @@ eureka:
   instance:
     prefer-ip-address: true
 
+#--------------------oauth2-----------------------
+security:
+  oauth2:
+    resource:
+      id: zx-provider
+      user-info-uri: http://localhost:8001/zx-auth/api/member
+      prefer-token-info: false

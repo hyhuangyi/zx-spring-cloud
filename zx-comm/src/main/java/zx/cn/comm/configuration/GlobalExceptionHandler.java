@@ -2,6 +2,9 @@ package zx.cn.comm.configuration;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.util.CollectionUtils;
 import org.springframework.validation.BindException;
 import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
@@ -43,24 +46,24 @@ public class GlobalExceptionHandler {
         log.error("控制层捕获ZX异常 GlobalBangerException,[{}]", e.getCause());
         return new ResultDO("0",e.getMessage());
     }
-//    @ExceptionHandler
-//    public ResultDO handle(InternalAuthenticationServiceException e){
-//        log.error(e.getMessage(),e);
-//        return new ResultDO("0",e.getMessage());
-//    }
+    @ExceptionHandler
+    public ResultDO handle(InternalAuthenticationServiceException e){
+        log.error(e.getMessage(),e);
+        return new ResultDO("0",e.getMessage());
+    }
 
-//    @ExceptionHandler
-//    public ResultDO handle(BadCredentialsException e){
-//        log.error("坏的凭证",e);
-//        return new ResultDO("0","用户名或密码错误");
-//    }
+    @ExceptionHandler
+    public ResultDO handle(BadCredentialsException e){
+        log.error("坏的凭证",e);
+        return new ResultDO("0","用户名或密码错误");
+    }
 
-//
-//    @ExceptionHandler
-//    public ResultDO handle(AccessDeniedException e){
-//        log.error("权限不足",e);
-//        return new ResultDO("0","权限不足");
-//    }
+
+    @ExceptionHandler
+    public ResultDO handle(AccessDeniedException e){
+        log.error("权限不足",e);
+        return new ResultDO("0","权限不足");
+    }
 
     @ExceptionHandler
     public ResultDO handle(Exception e){
