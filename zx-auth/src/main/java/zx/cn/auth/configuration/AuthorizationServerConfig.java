@@ -62,19 +62,10 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-                    .withClient("android")
-                    .secret("android")
-                    .scopes("android")
-                    .authorizedGrantTypes("password", "authorization_code", "refresh_token")
-                .and()
                     .withClient("webapp")
                     .secret("webapp")
                     .scopes("webapp")
                     .authorizedGrantTypes("password", "authorization_code", "refresh_token", "client_credentials")
-                   .redirectUris("http://baidu.com")
-                .and()
-                    .withClient("browser")
-                    .authorizedGrantTypes("refresh_token", "password")
-                    .scopes("ui");
+                   .redirectUris("http://baidu.com");
     }
 }

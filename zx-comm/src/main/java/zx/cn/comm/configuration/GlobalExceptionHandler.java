@@ -39,8 +39,6 @@ public class GlobalExceptionHandler {
         return new MethodValidationPostProcessor();
     }
 
-
-
     @ExceptionHandler
     public ResultDO handle(ZxException e){
         log.error("控制层捕获ZX异常 GlobalBangerException,[{}]", e.getCause());
@@ -57,7 +55,6 @@ public class GlobalExceptionHandler {
         log.error("坏的凭证",e);
         return new ResultDO("0","用户名或密码错误");
     }
-
 
     @ExceptionHandler
     public ResultDO handle(AccessDeniedException e){
