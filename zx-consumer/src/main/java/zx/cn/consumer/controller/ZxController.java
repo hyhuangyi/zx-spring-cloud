@@ -24,7 +24,7 @@ public class ZxController {
     @GetMapping("/getAll")
     @PreAuthorize("hasAnyAuthority('getAll')")
     public ResultDO getAllUser(){
-        return  restTemplate.getForObject("http://zx-provider/api/getMember",ResultDO.class);
+        return  restTemplate.getForObject("http://zx-provider/getMember",ResultDO.class);
     }
 
     public ResultDO fallback() {
