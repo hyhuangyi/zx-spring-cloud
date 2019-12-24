@@ -37,6 +37,7 @@ zuul:
       serviceId: zx-auth
   add-proxy-headers: true
 #---------------------oauth2---------------------
+# http://localhost:8001/zx-auth/oauth/token?grant_type=password&username=admin&password=admin&client_id=webapp&client_secret=webapp
 security:
   oauth2:
     client:
