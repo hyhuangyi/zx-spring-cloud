@@ -12,6 +12,7 @@ public class MyUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         Token token=new Token();
+        token.setUsername(s);
         MyUserDetails userDetails=new MyUserDetails(token);
         return userDetails;
     }
