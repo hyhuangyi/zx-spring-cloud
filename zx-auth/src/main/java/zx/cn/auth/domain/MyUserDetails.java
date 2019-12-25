@@ -13,10 +13,11 @@ public class MyUserDetails implements UserDetails {
 
     public MyUserDetails(Token token) {
         this.token = token;
-        //插入权限
+        //插入角色权限 角色必须是ROLE_开头
         for(String role:token.getRoles()){
             authorities.add(new SimpleGrantedAuthority(role));
         }
+        //TODO 还可以更细粒度权限
     }
 
     public void setPassword(String password) {
