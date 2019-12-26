@@ -8,10 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import zx.cn.comm.pojo.ResultDO;
-
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @RestController
 @RequestMapping("/api")
@@ -27,13 +25,13 @@ public class ZxController {
         return  restTemplate.getForObject("http://zx-provider/getMember",ResultDO.class);
     }
 
-    public ResultDO fallback() {
-        return new ResultDO("0","熔断了");
-    }
-
     @GetMapping("/current")
     @PreAuthorize("hasAnyAuthority('user')")
     public Principal user(Principal principal) {
         return principal;
+    }
+
+    public ResultDO fallback() {
+        return new ResultDO("0","熔断了");
     }
 }

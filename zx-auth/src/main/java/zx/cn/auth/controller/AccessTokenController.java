@@ -1,5 +1,6 @@
 package zx.cn.auth.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.LinkedMultiValueMap;
@@ -16,6 +17,7 @@ public class AccessTokenController {
     @Autowired
     private RestTemplate restTemplate;
 
+    @HystrixCommand(fallbackMethod = "fallback")
     @ApiOperation("获取accessToken")
     @PostMapping("/login")
     public ResultDO login(@ModelAttribute AccessDto dto){
@@ -28,6 +30,7 @@ public class AccessTokenController {
         return restTemplate.postForObject("http://zx-auth/oauth/token",paramMap,ResultDO.class);
     }
 
+    @HystrixCommand(fallbackMethod = "fallback")
     @ApiOperation("刷新accessToken")
     @PostMapping("/refresh")
     public ResultDO refresh(String refresh_token,String client_id,String client_secret){
@@ -37,5 +40,8 @@ public class AccessTokenController {
         paramMap.add("client_id",client_id);
         paramMap.add("client_secret",client_secret);
         return restTemplate.postForObject("http://zx-auth/oauth/token",paramMap,ResultDO.class);
+    }
+    public ResultDO fallback() {
+        return new ResultDO("0","熔断了");
     }
 }
