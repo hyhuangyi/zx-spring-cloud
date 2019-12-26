@@ -14,6 +14,7 @@ public class MyUserDetailsService implements UserDetailsService {
         Token token=new Token();
         token.setUsername(s);
         MyUserDetails userDetails=new MyUserDetails(token);
+        userDetails.setPassword("123456");
         return userDetails;
     }
 }

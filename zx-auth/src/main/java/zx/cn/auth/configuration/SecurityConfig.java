@@ -37,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
             @Override
             public boolean matches(CharSequence charSequence, String s) {
-                return true;
+                return charSequence.toString().equals(s);
             }
         };
     }
@@ -54,7 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("admin").password("admin").authorities("user", "getAll");
+//        auth.inMemoryAuthentication().withUser("admin").password("123456").authorities("user", "getAll");
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 }
