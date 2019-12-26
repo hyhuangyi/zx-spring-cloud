@@ -17,11 +17,11 @@ public class MyUserDetails implements UserDetails {
         for(String role:token.getRoles()){
             authorities.add(new SimpleGrantedAuthority(role));
         }
+        //TODO 还可以更细粒度权限
         //默认加几个测试
         authorities.add(new SimpleGrantedAuthority("user"));
         authorities.add(new SimpleGrantedAuthority("getAll"));
         authorities.add(new SimpleGrantedAuthority("test"));
-        //TODO 还可以更细粒度权限
     }
 
     public void setPassword(String password) {
