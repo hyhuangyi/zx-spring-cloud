@@ -68,5 +68,5 @@ hystrix:
           enabled: true
         isolation:
           thread:
-            timeoutInMilliseconds: 3500
+            timeoutInMilliseconds: 5000
 
