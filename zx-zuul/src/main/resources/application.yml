@@ -40,7 +40,7 @@ zuul:
       serviceId: zx-auth
   add-proxy-headers: true
 #---------------------oauth2---------------------
-# http://localhost:8001/zx-auth/oauth/token?grant_type=password&username=admin&password=admin&client_id=webapp&client_secret=webapp
+# http://localhost:8001/zx-auth/oauth/token?grant_type=password&username=admin&password=123456&client_id=webapp&client_secret=webapp
 security:
   oauth2:
     client:
@@ -50,3 +50,23 @@ security:
     resource:
       user-info-uri:  http://localhost:${server.port}/zx-auth/api/member
       prefer-token-info: false
+
+
+#----------------------超时配置-------------------
+ribbon:
+  ReadTimeout: 4000
+  ConnectTimeout: 4000
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 2
+  eureka:
+    enabled: true
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3500
+
