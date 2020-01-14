@@ -1,12 +1,17 @@
 spring:
   application:
     name: zx-auth
+  profiles:
+    active: dev
   redis:
-    database: 0
-    port: 6379
-    password:
+    database: 1
+    port: 63179
+    password: zx@!qwer
+    host: 47.110.13.117
 server:
   port: 8004
+logging:
+  config:  classpath:logback-spring.xml
 #--------------------eureka-----------------------
 eureka:
   client:
